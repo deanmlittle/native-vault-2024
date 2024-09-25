@@ -1,7 +1,7 @@
 use solana_program::program_error::ProgramError;
 pub enum VaultInstructions {
     Deposit,
-    Withdraw
+    Withdraw,
 }
 
 impl TryFrom<&u8> for VaultInstructions {
@@ -11,7 +11,7 @@ impl TryFrom<&u8> for VaultInstructions {
         match value {
             0 => Ok(Self::Deposit),
             1 => Ok(Self::Withdraw),
-            _ => Err(ProgramError::InvalidInstructionData)
+            _ => Err(ProgramError::InvalidInstructionData),
         }
     }
 }

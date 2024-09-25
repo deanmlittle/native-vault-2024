@@ -6,6 +6,12 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
+crate-type = ["cdylib", "lib"]
+name = "native_vault_2024"
 
 [dependencies]
 solana-program = "2.0.10"
+
+[dev-dependencies]
+mollusk-svm = { git = "https://github.com/buffalojoec/mollusk.git" }
+solana-sdk = "2.0.10"

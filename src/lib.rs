@@ -1,12 +1,16 @@
 mod instructions;
 use instructions::*;
+mod tests;
 
 mod deposit;
 mod withdraw;
 
-use solana_program::{account_info::AccountInfo, entrypoint, entrypoint::ProgramResult, program_error::ProgramError, pubkey, pubkey::Pubkey};
+use solana_program::{
+    account_info::AccountInfo, entrypoint, entrypoint::ProgramResult, program_error::ProgramError,
+    pubkey, pubkey::Pubkey,
+};
 
-const ID: Pubkey = pubkey!("11111111111111111111111111111111");
+const ID: Pubkey = pubkey!("9HFegTZnvebYjf9kSa6k3WBm93hRfogWB5B1goUrq1oL");
 
 entrypoint!(process_instruction);
 
@@ -24,7 +28,7 @@ pub fn process_instruction(
         .ok_or(ProgramError::InvalidInstructionData)?;
 
     let amount = data
-        .get(..8)  // u64 requires 8 bytes
+        .get(..8) // u64 requires 8 bytes
         .and_then(|bytes| bytes.try_into().ok())
         .map(u64::from_le_bytes)
         .ok_or(ProgramError::InvalidInstructionData)?;
