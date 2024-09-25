@@ -11,8 +11,8 @@ pub fn process(accounts: &[AccountInfo<'_>], amount: u64) -> ProgramResult {
     };
 
     // Do I really care if someone wants to send funds to the wrong PDA? 🤔
-    let pda = Pubkey::try_find_program_address(&[&signer.key.as_ref()], &crate::ID).ok_or(ProgramError::InvalidSeeds)?.0;
-    assert!(pda.eq(vault.key));
+    // let pda = Pubkey::try_find_program_address(&[&signer.key.as_ref()], &crate::ID).ok_or(ProgramError::InvalidSeeds)?.0;
+    // assert!(pda.eq(vault.key));
     
     invoke(
         &transfer(
